@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'os-package'
 
 buildscript {
     repositories {
@@ -10,6 +9,8 @@ buildscript {
         classpath 'com.netflix.nebula:gradle-ospackage-plugin:2.0.3'
     }
 }
+
+apply plugin: 'os-package'
 
 repositories {
 	mavenCentral()
@@ -30,6 +31,9 @@ ospackage {
 	release = '1'
 	os = LINUX
 	into '/srv/tomcat/catalina'
+
+	requires('tomcat')
+
 	from (configurations.runtime) {
 		into 'lib'
 	}
