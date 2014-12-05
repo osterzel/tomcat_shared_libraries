@@ -32,13 +32,15 @@ ospackage {
 	os = LINUX
 	into '/srv/tomcat/catalina'
 
-	requires('tomcat')
-
 	from (configurations.runtime) {
 		into 'lib'
 	}
 }
 
 buildRpm {
+	requires('tomcat7', '2.2', GREATER | EQUAL )
+}
+
+buildDeb {
 	
 }
